@@ -6,13 +6,16 @@ export const postsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com/' }),
   endpoints: (builder) => ({
     getPosts: builder.query<Post[], void>({
-      query: () => 'posts',
+      query: () => 'posts'
     }),
     getPostById: builder.query<Post, number>({
-      query: (id) => `posts/${id}`,
+      query: (id) => `posts/${id}`
     }),
-  }),
-});
+    getPostNyIdMut: builder.mutation<Post, number>({
+      query: (id) => `posts/${id}`
+    })
+  })
+})
 
 // Export hooks for components
-export const { useGetPostsQuery, useGetPostByIdQuery } = postsApi;
+export const { useGetPostsQuery, useGetPostByIdQuery, useGetPostNyIdMutMutation } = postsApi;
